@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const PostItem = ({ post, badgeClass }) => {
   const [copied, setCopied] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   // Define difficulty indicators and their styles
   const getDifficultyBadge = () => {
@@ -114,7 +113,6 @@ const PostItem = ({ post, badgeClass }) => {
   };
 
   const difficultyBadge = getDifficultyBadge();
-  // We're directly using post.bestTimeToPost in the render now
 
   // Function to copy post content to clipboard
   const copyToClipboard = () => {
@@ -127,6 +125,7 @@ const PostItem = ({ post, badgeClass }) => {
       setTimeout(() => setCopied(false), 2000);
     });
   };
+
   return (
     <li className="flex flex-col md:flex-row hover:bg-gray-50 p-3 rounded-lg transition-colors duration-200 animate__animated animate__fadeIn group border border-transparent hover:border-gray-200 hover:shadow-md">
       <div className="flex-shrink-0 mt-1">
@@ -180,30 +179,7 @@ const PostItem = ({ post, badgeClass }) => {
           </div>
         )}
 
-        <div className="mt-2 flex justify-between items-center">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="text-xs flex items-center gap-1 text-indigo-500 hover:text-indigo-700 transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-3 w-3 transform transition-transform ${
-                expanded ? "rotate-180" : ""
-              }`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-            {expanded ? "Show Less" : "Show Tips"}
-          </button>
-
+        <div className="mt-2 flex justify-end items-center">
           <button
             onClick={copyToClipboard}
             className={`text-xs flex items-center gap-1 px-2 py-1 rounded ${
@@ -249,68 +225,6 @@ const PostItem = ({ post, badgeClass }) => {
             )}
           </button>
         </div>
-
-        {/* Expanded content with posting tips */}
-        {expanded && (
-          <div className="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600">
-            <h4 className="font-medium text-gray-700 mb-1">Posting Tips:</h4>
-            <ul className="space-y-1 pl-4 list-disc">
-              <li>Include a question to boost engagement</li>
-              <li>Add relevant hashtags for better visibility</li>
-              <li>Keep formatting clean with line breaks</li>
-            </ul>
-            <div className="mt-2 p-2 bg-indigo-50 rounded">
-              <p className="text-indigo-700 font-medium">
-                Estimated Engagement:{" "}
-              </p>
-              <div className="flex space-x-3 mt-1">
-                <span className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 mr-1 text-indigo-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                    <path
-                      fillRule="evenodd"
-                      d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  ~30 views
-                </span>
-                <span className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 mr-1 text-indigo-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  ~12 reactions
-                </span>
-                <span className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 mr-1 text-indigo-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-                  </svg>
-                  ~5 comments
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </li>
   );

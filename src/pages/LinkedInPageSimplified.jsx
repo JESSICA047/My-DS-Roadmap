@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LinkedInCalendar from "../components/LinkedInCalendar/LinkedInCalendarSimplified";
+import LinkedInCalendar from "../components/LinkedInCalendar/LinkedInCalendar";
 import { Link } from "react-router-dom";
 
 function LinkedInPage() {
