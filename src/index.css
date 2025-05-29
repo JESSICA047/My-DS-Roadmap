@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-xl transform -translate-y-1;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 bg-primary-500 text-white font-medium rounded-lg
+    transition-all duration-300 hover:bg-primary-600 hover:shadow-lg
+    hover:shadow-primary-500/20 active:translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-white border border-gray-300 text-gray-700
+    font-medium rounded-lg transition-all duration-300 hover:border-gray-400
+    hover:shadow-md active:translate-y-0.5;
+  }
+
+  .roadmap-card {
+    @apply bg-white rounded-lg shadow-md p-4 transition-all duration-300;
+  }
+
+  .roadmap-card:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+
+  .progress-bar-container {
+    @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden;
+  }
+
+  .progress-bar {
+    @apply h-full bg-gradient-to-r from-primary-500 to-blue-500 
+    rounded-full transition-all duration-1000 ease-out;
+    width: 33%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Modern card hover effects */
+.roadmap-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Project card hover effects */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Progress bar */
+.progress-container {
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  height: 8px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 8px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: 9999px;
+  transition: width 1s ease;
+  width: 33% !important;
+  display: block !important;
+  visibility: visible !important;
+}
